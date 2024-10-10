@@ -5,6 +5,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Avatar from "@mui/material/Avatar";
 import { deepPurple } from "@mui/material/colors";
 import { signOut } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 export default function AuthMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -15,6 +16,8 @@ export default function AuthMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const { push } = useRouter();
 
   return (
     <div className="hidden lg:block">
@@ -36,8 +39,22 @@ export default function AuthMenu() {
           "aria-labelledby": "basic-button",
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
+        <MenuItem
+          onClick={() => {
+            push(`/profile`);
+            handleClose();
+          }}
+        >
+          Profile
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            push(`myAppointments`);
+            handleClose();
+          }}
+        >
+          My Appointments
+        </MenuItem>
         <MenuItem
           onClick={() => {
             signOut();

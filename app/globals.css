@@ -2,7 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+/* Hidden Scroll */
+.category-speciality::-webkit-scrollbar {
+  @apply hidden;
+}
+
 /* main-container */
 .main-container {
   @apply container mx-auto px-4 sm:px-8 md:px-12 lg:px-16;
+}
+
+/* ================== Classes Animations */
+
+.fade-animation {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/*========= Animations =============*/
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }

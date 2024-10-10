@@ -4,6 +4,7 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/footer/Footer";
 import SesstionProvider from "@/context/SessionProvider";
 import dynamic from "next/dynamic";
+import StoreContextProvider from "@/context/StoreProvider";
 
 const ToastAlertProvider = dynamic(
   () => import("@/context/ToastAlertProvider"),
@@ -21,12 +22,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${jost.className} antialiased`}>
-        <SesstionProvider>
-          <ToastAlertProvider />
-          <Navbar />
-          <main className="min-h-[calc(100vh-72vh)]">{children}</main>
-          <Footer />
-        </SesstionProvider>
+        <StoreContextProvider>
+          <SesstionProvider>
+            <ToastAlertProvider />
+            <Navbar />
+            <main className="min-h-[calc(100vh-72vh)]">{children}</main>
+            <Footer />
+          </SesstionProvider>
+        </StoreContextProvider>
       </body>
     </html>
   );

@@ -1,6 +1,8 @@
+"use client";
 import React from "react";
-import { specialityData } from "@/assets/assets_frontend/assets";
+import Link from "next/link";
 import Image from "next/image";
+import { specialityData } from "@/assets/assets_frontend/assets";
 
 function Category() {
   return (
@@ -14,9 +16,11 @@ function Category() {
           your appointment hassle-free.
         </p>
       </div>
-      <div className="flex items-center justify-between lg:justify-center gap-6 mt-12 overflow-x-auto p-8">
+      <div className="flex items-center justify-between lg:justify-center gap-6 mt-12 overflow-x-scroll p-8 category-speciality">
         {specialityData.map((special, idx) => (
-          <div
+          <Link
+            onClick={() => scrollTo(0, 0)}
+            href={`/doctors/${special.speciality}`}
             key={idx}
             className="flex justify-center items-center flex-col gap-y-2 translate-y-0 transition-transform hover:-translate-y-2 duration-500 origin-center"
           >
@@ -29,7 +33,7 @@ function Category() {
             <h5 className="text-sm font-normal whitespace-nowrap">
               {special.speciality}
             </h5>
-          </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -31,7 +31,7 @@ function AboutPage() {
       </h2>
       {/* Col_1 */}
       <div className="flex flex-col lg:flex-row gap-y-16 lg:gap-y-0 items-center lg:justify-between">
-        <div className="lg:basis-[35%] bg-red-500">
+        <div className="lg:basis-[35%]">
           <Image
             src={ImageAbout}
             alt="image_about"
